@@ -5,13 +5,10 @@ workflows:
     max_build_duration: 120
     environment:
       flutter: stable
-      vars:
-        JAVA_HOME: /Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home
     scripts:
       - name: Check Java Version
         script: |
-          echo "Using JAVA_HOME: $JAVA_HOME"
-          ls -la $JAVA_HOME
+          echo "JAVA_HOME: $JAVA_HOME"
           java -version
       - name: Clean Build
         script: |
