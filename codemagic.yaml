@@ -6,13 +6,22 @@ workflows:
     environment:
       flutter: stable
     scripts:
-      - name: Get Flutter dependencies
+      - name: Check Java Version
+        script: |
+          echo "JAVA_HOME: $JAVA_HOME"
+          ls -la $JAVA_HOME
+          java -version
+      - name: Clean Build
+        script: |
+          cd $CM_BUILD_DIR/flutter_AppCoffe
+          flutter clean
+      - name: Get Flutter Dependencies
         script: |
           cd $CM_BUILD_DIR/flutter_AppCoffe
           flutter pub get
       - name: Build APK
         script: |
           cd $CM_BUILD_DIR/flutter_AppCoffe
-          flutter build apk --release
+          flutter build apk --release --stacktrace
     artifacts:
       - flutter_AppCoffe/build/app/outputs/flutter-apk/*.apk
