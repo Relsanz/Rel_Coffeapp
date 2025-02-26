@@ -6,13 +6,18 @@ workflows:
     environment:
       flutter: stable
       vars:
-        JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+        # Pastikan path JAVA_HOME sesuai dengan yang tersedia di lingkungan Codemagic
+        JAVA_HOME: /Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
     scripts:
       - name: Check Java Version
         script: |
           echo "Using JAVA_HOME: $JAVA_HOME"
           java -version
-      - name: Get Flutter dependencies
+      - name: Clean Build
+        script: |
+          cd $CM_BUILD_DIR/flutter_AppCoffe
+          flutter clean
+      - name: Get Flutter Dependencies
         script: |
           cd $CM_BUILD_DIR/flutter_AppCoffe
           flutter pub get
