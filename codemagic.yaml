@@ -19,9 +19,8 @@ workflows:
           cd $CM_BUILD_DIR/flutter_AppCoffe
           flutter pub get
       - name: Build APK
-  script: |
-    cd $CM_BUILD_DIR/flutter_AppCoffe
-    flutter build apk --release --verbose
-
+        script: |
+          cd $CM_BUILD_DIR/flutter_AppCoffe
+          flutter build apk --release --verbose
     artifacts:
       - flutter_AppCoffe/build/app/outputs/flutter-apk/*.apk
